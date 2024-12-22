@@ -36,7 +36,7 @@ const Navbar = () => {
         </div>
 
         <div className="md:w-1/4">
-          <ul className="flex justify-end items-center gap-5 text-gray-600">
+          <div className="flex justify-end items-center gap-5 text-gray-600">
             <div className="md:w-8 md:h-8 flex justify-center items-center rounded-full md:bg-gray-100 hover:text-primary transition-all duration-150 ease-in-out">
               <button
                 onClick={() => setIsOpen((prev) => !prev)}
@@ -46,17 +46,21 @@ const Navbar = () => {
               </button>
             </div>
 
-            {menus.map((menu, idx) => (
-              <li
-                key={idx}
-                className="md:w-8 md:h-8 flex justify-center items-center rounded-full md:bg-gray-100 hover:text-primary transition-all duration-150 ease-in-out"
-              >
-                <Link href={menu.path} className="text-lg md:text-xl">
-                  {menu.icon}
-                </Link>
-              </li>
-            ))}
-          </ul>
+            <div className="md:w-8 md:h-8 flex justify-center items-center rounded-full md:bg-gray-100 hover:text-primary transition-all duration-150 ease-in-out">
+              <Link href="/account/login" className="text-lg md:text-xl">
+                <FaRegUser />
+              </Link>
+            </div>
+
+            <div className="md:w-8 md:h-8 flex justify-center items-center rounded-full md:bg-gray-100 hover:text-primary transition-all duration-150 ease-in-out relative cursor-pointer">
+              <Link href="/cart" className="text-lg md:text-xl">
+                <RiShoppingBagLine />
+              </Link>
+
+              <div className="absolute top-0 right-0 w-4 h-4 rounded-full flex items-center justify-center bg-primary text-white text-xs">4</div>
+            </div>
+
+          </div>
         </div>
       </div>
 
