@@ -13,7 +13,7 @@ const orderApis = apiSlice.injectEndpoints({
     }),
 
     getOrders: builder.query({
-      query: (userId) => `/orders/my_orders/${userId}`,
+      query: ({userId, page}) => `/orders/my_orders/${userId}?page=${page}`,
       providesTags: ["orders"],
     }),
 

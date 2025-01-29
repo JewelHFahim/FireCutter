@@ -1,21 +1,16 @@
 "use client";
 
 import { useGetOrdersQuery } from "@/redux/features/orders/orderApis";
-import {
-  MdOutlineArrowBackIos,
-  MdOutlineArrowForwardIos,
-} from "react-icons/md";
 import { extractUserIdFromToken } from "../private/extractUserIdFromToken";
 import Cookies from "js-cookie";
-import Pagination from "@/utils/Pagination";
 import { useState } from "react";
+import Pagination from "@/utils/Pagination";
 
 export default function Orders({ setOrderId, setActive }) {
   const token = Cookies.get("fc_token");
   const userId = extractUserIdFromToken(token);
   const [page, setPage] = useState(1);
-  const { data: orderList, isLoading } = useGetOrdersQuery(userId);
-  console.log(orderList);
+  const { data: orderList, isLoading } = useGetOrdersQuery({ userId, page });
 
   const handleSelectId = (id) => {
     setOrderId(id);
@@ -68,13 +63,7 @@ export default function Orders({ setOrderId, setActive }) {
           </tbody>
         </table>
 
-        <div className="w-full flex items-center justify-between px-4 pt-2">
-          <p className="text-sm text-gray-700">
-            Total- {orderList?.totalOrders} order
-          </p>
-
-          <Pagination orderList={orderList} page={page} setPage={setPage}/>
-        </div>
+        <Pagination orderList={orderList} page={page} setPage={setPage}/>
       </div>
     </div>
   );
