@@ -6,20 +6,11 @@ import { FaRegUser } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { RiShoppingBagLine } from "react-icons/ri";
 import Search from "../search/Search";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const menus = [
-    {
-      icon: <FaRegUser />,
-      path: "/account/login",
-    },
-    {
-      icon: <RiShoppingBagLine />,
-      path: "/cart",
-    },
-  ];
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   return (
     <div className="border-b py-4">
@@ -40,24 +31,24 @@ const Navbar = () => {
             <div className="md:w-8 md:h-8 flex justify-center items-center rounded-full md:bg-gray-100 hover:text-primary transition-all duration-150 ease-in-out">
               <button
                 onClick={() => setIsOpen((prev) => !prev)}
-                className="text-lg md:text-xl"
+                className="text-2xl md:text-xl"
               >
                 <IoSearch />
               </button>
             </div>
 
             <div className="md:w-8 md:h-8 flex justify-center items-center rounded-full md:bg-gray-100 hover:text-primary transition-all duration-150 ease-in-out">
-              <Link href="/account/login" className="text-lg md:text-xl">
+              <Link href="/account" className="text-[22px] md:text-xl">
                 <FaRegUser />
               </Link>
             </div>
 
             <div className="md:w-8 md:h-8 flex justify-center items-center rounded-full md:bg-gray-100 hover:text-primary transition-all duration-150 ease-in-out relative cursor-pointer">
-              <Link href="/cart" className="text-lg md:text-xl">
+              <Link href="/cart" className="text-2xl md:text-xl">
                 <RiShoppingBagLine />
               </Link>
 
-              <div className="absolute top-0 right-0 w-4 h-4 rounded-full flex items-center justify-center bg-primary text-white text-xs">4</div>
+              {totalQuantity > 0 && <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center bg-primary text-white text-xs">{totalQuantity}</div>}
             </div>
 
           </div>

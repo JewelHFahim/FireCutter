@@ -1,19 +1,22 @@
+"use client";
+
 import ProductCard from "@/components/card/ProductCard";
 import SuggestionProductCard from "@/components/card/SuggessionProductCard";
 import FilterSort from "@/components/filter/FilterSort";
 import Pagination from "@/components/pagination/Pagination";
+import { extractUserIdFromToken } from "@/components/private/extractUserIdFromToken";
+import { useGetAllProductsQuery } from "@/redux/features/products/productApis";
 
 const Home = () => {
+  const { data: allProducts, isLoading } = useGetAllProductsQuery();
+
   return (
     <div className="">
       <FilterSort />
 
       <div className="mt-5 grid grid-cols-2 md:grid-cols-3 justify-between items-center gap-x-5 gap-y-8">
-        {[...Array(9)].map((product, idx) => (
-          <ProductCard
-            key={idx}
-            product={product}
-          />
+        {allProducts?.data?.map((product, idx) => (
+          <ProductCard key={idx} product={product} idx={idx} />
         ))}
       </div>
 

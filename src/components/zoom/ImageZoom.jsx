@@ -26,7 +26,7 @@ const ImageZoom = ({ src, zoomScale = 2 }) => {
       onMouseMove={handleMoveMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="imgContainer relative overflow-hidden w-full h-[60vh] sm:h-[80vh]"
+      className="imgContainer relative overflow-hidden w-full h-[55vh] sm:h-[80vh]"
     >
       <div className={`mainImg  ${isZoomed ? "zoomed" : ""}`}>
         <Image src={src} alt="img" fill />

@@ -1,7 +1,5 @@
-import Header from "@/components/header/Header";
-import "./globals.css";
 import { Roboto } from "next/font/google";
-import Footer from "@/components/footer/Footer";
+import "./globals.css";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],
@@ -17,12 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={roboto.className} suppressHydrationWarning>
-      <body>
-        <Header />
-        {/* <div className="w-[90vw] md:w-[90vw] lg:w-[71vw] mx-auto">{children}</div> */}
-        <div className="w-[90vw] md:w-[90vw] lg:w-[65vw] mx-auto">{children}</div>
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
