@@ -32,6 +32,7 @@ export default function CheckoutPage() {
     formState: { errors },
   } = useForm();
   const { products, total } = useSelector((state) => state.cart);
+  console.log(products);
   const userId = extractUserIdFromToken(token);
   const { data: userDetails } = useUserDetailsQuery(userId);
   const [createOrder] = useCreateOrderMutation();
@@ -62,12 +63,14 @@ export default function CheckoutPage() {
   const onSubmit = async (data) => {
     const orders = products?.map((product) => {
       return {
-        product_id: "678573ad29e21d9abb0c635b",
+        product_id: product?._id,
         quantity: product?.quantity,
         price: product?.sale_price,
         size: product?.sizes
       };
     });
+
+    console.log(orders)
 
     const payment_details = {
       payment_number: data.payment_number,

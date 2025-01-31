@@ -69,31 +69,31 @@ const OrderDetails = ({ orderId }) => {
       </div>
 
       {/*Sub Total */}
-      <div className="w-full mt-5 px-2 md:px-10">
-        <div className="w-full grid grid-cols-4 md:grid-cols-6 items-center text-center lg:text-end">
-          <div className="col-span-2 md:col-span-4 text-xs text-gray-400 text-start">
+      <div className="w-full mt-2 md:mt-5 px-2 md:px-10">
+        <div className="w-full grid grid-cols-12 items-center text-center lg:text-end text-sm md:text-base">
+          <div className="col-span-6 md:col-span-8 text-xs text-gray-400 text-start">
             Terms & Conditions
           </div>
-          <div className="col-span-1">Subtotal</div>
-          <div className="col-span-1">Tk{details?.total_price - details?.delivery_charge}</div>
+          <div className="col-span-3 md:col-span-2 text-end">Subtotal</div>
+          <div className="col-span-3 md:col-span-2 text-end">Tk{details?.total_price - details?.delivery_charge}</div>
         </div>
       </div>
 
       {/* Shipping Charge */}
       <div className="w-full mt-2 px-2 md:px-10">
-        <div className="w-full grid grid-cols-4 lg:grid-cols-6 items-center text-center text-sm md:text-base lg:text-end">
-          <div className="col-span-2 md:col-span-4"></div>
-          <div className="col-span-1 border-b-2 pb-2">Delivery Charge</div>
-          <div className="col-span-1 border-b-2 pb-2">Tk{details?.delivery_charge}.00</div>
+        <div className="w-full grid grid-cols-12 items-center text-cente text-sm md:text-base lg:text-end text-end">
+          <div className="col-span-4 md:col-span-7"></div>
+          <div className="col-span-5 md:col-span-3 border-b-2 pb-2">Delivery Charge</div>
+          <div className="col-span-3 md:col-span-2 border-b-2 pb-2">Tk{details?.delivery_charge}.00</div>
         </div>
       </div>
 
       {/* Total*/}
       <div className="w-full mt-2 px-2 md:px-10">
-        <div className="w-full grid grid-cols-4 lg:grid-cols-6 items-center text-center text-sm md:text-base lg:text-end">
-          <div className="col-span-2 md:col-span-4"></div>
-          <div className="col-span-1 font-medium">Total</div>
-          <div className="col-span-1 font-medium">Tk{details?.total_price}</div>
+        <div className="w-full grid grid-cols-12 items-center text-end text-sm md:text-base lg:text-end">
+          <div className="col-span-6 md:col-span-8"></div>
+          <div className="col-span-3 md:col-span-2 font-medium">Total</div>
+          <div className="col-span-3 md:col-span-2 font-medium">Tk{details?.total_price}</div>
         </div>
       </div>
     </div>

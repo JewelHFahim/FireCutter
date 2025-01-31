@@ -1,12 +1,38 @@
+"use client"
+
 import React, { act, useState } from "react";
 import { BiLogOutCircle } from "react-icons/bi";
 import { CiBoxList } from "react-icons/ci";
 import { ImMenu } from "react-icons/im";
 import { LiaHornbill, LiaUserSolid } from "react-icons/lia";
 import { TbCurrentLocation } from "react-icons/tb";
+import Cookies from "js-cookie";
+import { useLogoutMutation } from "@/redux/features/auth/authApis";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const AcccountNav = ({ active, setActive }) => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [logout] = useLogoutMutation();
+
+  const handleLogout = async () => {
+    try {
+      const res = await logout();
+      console.log(res);
+      if (res?.data) {
+        toast.success("Logout success");
+        Cookies.remove("fc_token");
+        router.push("/");
+      }
+      if (res?.error) {
+        toast.error("Logout failed");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const menus = [
     {
       id: 1,
@@ -25,7 +51,7 @@ const AcccountNav = ({ active, setActive }) => {
       name: "Reset Password",
       path: "reset",
       icon: <TbCurrentLocation />,
-    }
+    },
   ];
 
   return (
@@ -67,7 +93,10 @@ const AcccountNav = ({ active, setActive }) => {
       </div>
 
       <div>
-        <button className="hidden w-max font-medium text-primary pr-5 py-1 text-sm rounded-md md:flex items-center gap-1 border">
+        <button
+          onClick={handleLogout}
+          className="hidden w-max font-medium text-primary hover:text-white hover:bg-primary transition-all duration-200 pr-5 py-1 text-sm rounded-md md:flex items-center gap-1 border"
+        >
           <BiLogOutCircle className="text-base" />
           Logout
         </button>

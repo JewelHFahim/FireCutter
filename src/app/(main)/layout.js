@@ -13,9 +13,13 @@ import { Toaster } from "react-hot-toast";
 export default function PrimaryLayout({ children }) {
   return (
     <ReduxProvider>
-      <Header />
-      <div className="w-[90vw] md:w-[90vw] lg:w-[65vw] mx-auto">{children}</div>
-      <Footer />
+      <div className="min-h-screen">
+        <Header />
+        <div className="w-[90vw] md:w-[90vw] lg:w-[65vw] mx-auto">
+          {children}
+        </div>
+        <Footer />
+      </div>
       <Toaster />
     </ReduxProvider>
   );

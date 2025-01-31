@@ -10,6 +10,8 @@ import PrivateRoute from "@/components/private/PrivateRoute";
 import ResetPassword from "@/components/user-account/ResetPassword";
 import AcccountNav from "@/components/user-account/AcccountNav";
 import OrderDetails from "@/components/user-account/OrderDetails";
+import { useLogoutMutation } from "@/redux/features/auth/authApis";
+import toast from "react-hot-toast";
 
 const AccountPage = () => {
   const token = Cookies.get("fc_token");
@@ -18,11 +20,10 @@ const AccountPage = () => {
   const userId = extractUserIdFromToken(token);
   const { data: userDetails } = useUserDetailsQuery(userId);
 
-
   const renderComponent = () => {
     switch (active) {
       case "orders":
-        return <Orders setActive={setActive} setOrderId={setOrderId}/>;
+        return <Orders setActive={setActive} setOrderId={setOrderId} />;
 
       case "account":
         return <AccountInfo />;
@@ -31,7 +32,7 @@ const AccountPage = () => {
         return <ResetPassword />;
 
       case "invoice":
-        return <OrderDetails orderId={orderId}/>;
+        return <OrderDetails orderId={orderId} />;
 
       default:
         return <Orders />;
