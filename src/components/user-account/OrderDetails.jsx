@@ -7,13 +7,13 @@ const OrderDetails = ({ orderId }) => {
   return (
     <div className="py-2">
       {/* Billing Address */}
-      <div className=" w-full px-10">
-        <div className="w-full grid grid-cols-2 lg:grid-cols-6 text-center gap-y-5 lg:text-end">
+      <div className="w-full px-4 lg:px-10">
+        <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-start text-center gap-y-5 lg:text-end">
           <div className="col-span-4 text-start text-sm text-gray-600">
             <h3 className="font-medium text-black">Bill to:</h3>
             <p>{details?.user_id?.fullName}</p>
             <p>{details?.user_id?.phone}</p>
-            <p>{details?.user_id?.address}</p>
+            <p className="w-[90%]">{details?.user_id?.address}</p>
           </div>
 
           <div className="col-span-2 text-start text-sm text-gray-600">

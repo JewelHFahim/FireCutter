@@ -1,3 +1,5 @@
+"use client"
+
 import { IoIosArrowDown } from "react-icons/io";
 import OrderedProductsDropdown from "./OrderedProductsDropdown";
 

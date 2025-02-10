@@ -4,7 +4,7 @@ const porductApis = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
 
     getAllProducts: builder.query({
-      query: ()=> "/products",
+      query: (page)=> `/products/?page=${page}`,
       invalidatesTags: ["products"],
     }),
 

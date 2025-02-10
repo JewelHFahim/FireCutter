@@ -1,11 +1,17 @@
+"use client";
+
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
-const OrderListAndPriceSummery = () => {
-  const cart = JSON?.parse(localStorage?.getItem("cart"));
-  const products = cart?.products;
-  const totalQuantity = cart?.totalQuantity;
-  const total = cart?.total || "00.0";
+const OrderListAndPriceSummery = ({isMatch}) => {
+  // const cart = JSON?.parse(localStorage?.getItem("cart"));
+  const { products, totalQuantity, total } = useSelector((state) => state.cart);
 
+  // console.log(products);
+
+  // const products = cart?.products;
+  // const totalQuantity = cart?.totalQuantity;
+  // const total = cart?.total || "00.0";
 
   return (
     <div className="h-full">
@@ -31,10 +37,10 @@ const OrderListAndPriceSummery = () => {
                 </div>
               </div>
               <div>
-                <p className="text-xs font-medium">
-                  {order?.title}
+                <p className="text-xs font-medium">{order?.title}</p>
+                <p className="text-[11px] text-gray-500">
+                  {order?.sizes} / {order?.colors}
                 </p>
-                <p className="text-[11px] text-gray-500">{order?.sizes} / {order?.colors}</p>
               </div>
             </div>
 
@@ -48,19 +54,25 @@ const OrderListAndPriceSummery = () => {
 
         <div className="flex flex-col gap-2 mt-4">
           <div className="flex items-center justify-between text-sm">
-            <p>Subtotal • {totalQuantity} items</p>
-            <p>৳{total}</p>
+            <p>
+              Subtotal • {totalQuantity}
+              items
+            </p>
+            <p>৳
+             {total}
+              </p>
           </div>
 
           <div className="flex items-center justify-between text-sm">
             <p>Shipping</p>
-            <p>৳{ total > 0 ? 140.00 : "00.0"}</p>
+            <p>৳{ total > 0 ? (isMatch ? 70 : 140) : 0 }</p>
           </div>
 
           <div className="flex items-center justify-between font-medium text-lg">
             <p className="text-">Total</p>
             <p>
-              <span className="text-xs font-normal"> BDT </span> ৳{total + (total > 0 ? 140 : 0)}
+              <span className="text-xs font-normal"> BDT </span> ৳
+             {total + (total > 0 ? (isMatch ? 70 : 140) : 0)}
             </p>
           </div>
         </div>

@@ -10,7 +10,7 @@ const ProductCard = ({ product, idx }) => {
       <Link href={`/product/${product?._id}`}>
         <div className="w-full relative img-container overflow-hidden max-h-[350px]">
           <Image
-            src={`/img${3+idx}.jpeg`}
+            src={`/img3.jpeg`}
             alt="img"
             layout="responsive"
             width={800}
@@ -18,7 +18,7 @@ const ProductCard = ({ product, idx }) => {
             className="object-cover main-img transition-opacity duration-500"
           />
           <Image
-            src={`/img${4+idx}.jpeg`}
+            src={`/img4.jpeg`}
             alt="Secondary Image"
             layout="responsive"
             width={800}

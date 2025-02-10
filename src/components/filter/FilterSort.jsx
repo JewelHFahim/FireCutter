@@ -1,6 +1,6 @@
 import React from "react";
 
-const FilterSort = () => {
+const FilterSort = ({ totalCount }) => {
   return (
     <div className="flex items-center justify-between py-4">
       <div className="flex items-center gap-2">
@@ -12,7 +12,7 @@ const FilterSort = () => {
         </select>
       </div>
 
-      <p className="text-sm italic">271 products</p>
+      <p className="text-sm italic">{totalCount ? totalCount : 0} products</p>
     </div>
   );
 };

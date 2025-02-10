@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { RiShoppingBagLine } from "react-icons/ri";
@@ -10,7 +10,14 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const totalQuantity = useSelector((state) => state.cart?.totalQuantity);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  // console.log(totalQuantity)
+  // const {totalQuantity} = JSON?.parse(localStorage?.getItem("cart"));
 
   return (
     <div className="border-b py-4">
@@ -48,9 +55,12 @@ const Navbar = () => {
                 <RiShoppingBagLine />
               </Link>
 
-              {totalQuantity > 0 && <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center bg-primary text-white text-xs">{totalQuantity}</div>}
+              {isClient && totalQuantity > 0 ? (
+                <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center bg-primary text-white text-xs">
+                  {totalQuantity}
+                </div>
+              ) : null}
             </div>
-
           </div>
         </div>
       </div>

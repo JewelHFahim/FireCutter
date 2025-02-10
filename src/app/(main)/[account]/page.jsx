@@ -2,7 +2,6 @@
 
 import { extractUserIdFromToken } from "@/components/private/extractUserIdFromToken";
 import { useUserDetailsQuery } from "@/redux/features/users/userApis";
-import Cookies from "js-cookie";
 import React, { useState } from "react";
 import Orders from "@/components/user-account/Orders";
 import AccountInfo from "@/components/user-account/AccountInfo";
@@ -14,10 +13,10 @@ import { useLogoutMutation } from "@/redux/features/auth/authApis";
 import toast from "react-hot-toast";
 
 const AccountPage = () => {
-  const token = Cookies.get("fc_token");
+  // const token = Cookies.get("fc_token");
   const [active, setActive] = useState("orders");
   const [orderId, setOrderId] = useState("");
-  const userId = extractUserIdFromToken(token);
+  const userId = extractUserIdFromToken();
   const { data: userDetails } = useUserDetailsQuery(userId);
 
   const renderComponent = () => {

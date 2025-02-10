@@ -12,6 +12,7 @@ import { FiMinus, FiPlus } from "react-icons/fi";
 const Cart = () => {
   const dispatch = useDispatch();
   const {products, total } = useSelector( state=> state.cart )
+  // const {products, total }  = JSON?.parse(localStorage?.getItem("cart"));
   const [quantity, setQuantity] = useState();
 
   const handleAddTocart = (item) => {
@@ -27,9 +28,9 @@ const Cart = () => {
   return (
     <div className="w-full min-h-[70vh] flex flex-col items-center">
       {products?.length > 0 ? (
-        <div>
+        <div  className="mt-4 w-full h-full ">
           
-          <div className="mt-4 w-full h-full flex flex-col justify-cente items-center">
+          <div className="flex flex-col justify-cente items-center">
             <h2 className="text-[28px] lg:text-4xl font-semibold">Your cart</h2>
             <Link
               href="/"

@@ -5,13 +5,37 @@ import FilterSort from "@/components/filter/FilterSort";
 import Pagination from "@/components/pagination/Pagination";
 import { useGetAllProductsQuery } from "@/redux/features/products/productApis";
 import Loader from "@/utils/loader/Loader";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
-  const { data: allProducts, isLoading } = useGetAllProductsQuery();
+  const [page, setPage] = useState(1);
+  // const dispatch = useDispatch();
+  const { data: allProducts, isLoading } = useGetAllProductsQuery(page);
+  console.log(allProducts)
+  const totalCount = allProducts?.pagination?.totalCount;
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const cart = JSON.parse(localStorage.getItem("cart")) || {
+  //       products: [],
+  //       total: 0,
+  //       totalQuantity: 0,
+  //     };
+  //     dispatch(setCart(cart));
+  //   }
+  // }, [dispatch]);
+
+  if (isLoading) {
+    return (
+      <div className="w-full flex justify-center items-center h-[50vh]">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
-      <FilterSort />
+      <FilterSort totalCount={totalCount} />
 
       {isLoading ? (
         <div className="w-full flex justify-center items-center h-[50vh]">
@@ -25,7 +49,7 @@ const Home = () => {
         </div>
       )}
 
-      <Pagination />
+      <Pagination page={page} setPage={setPage} allProducts={allProducts} />
     </div>
   );
 };

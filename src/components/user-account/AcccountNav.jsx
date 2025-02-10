@@ -57,7 +57,7 @@ const AcccountNav = ({ active, setActive }) => {
   return (
     <div className=" border-gray-200 bg-gray-100 md:bg-gray-50 md:w-[25%] md:pl-5 md:py-2 flex md:flex-col flex-row items-center md:items-start justify-between">
       <div className="w-full flex flex-col text-sm">
-        <div className=" w-full flex items-center justify-between border-b md:border-0 md:py-2">
+        <div className="w-full flex items-center justify-between border-b md:border-0 p-2">
           <h3 className="uppercase text-sm font-medium md:text-base md:mb-5">
             My Account
           </h3>
