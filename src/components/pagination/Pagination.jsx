@@ -2,8 +2,6 @@ import React from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 const Pagination = ({ page, setPage, allProducts }) => {
-  console.log(allProducts);
-  console.log(allProducts?.pagination?.currentPage);
 
   const handlePagination = (value) => {
     console.log(value);

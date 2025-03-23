@@ -13,6 +13,7 @@ import BuyItNowBtn from "@/components/buttons/BuyItNowBtn";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/features/cart/cartSlice";
 import toast from "react-hot-toast";
+import PDFGenerator from "@/components/pdf/PDFGenerator";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -20,7 +21,6 @@ const ProductDetails = () => {
   const [current, setCurrent] = useState(0);
   const { data: productDetails, isLoading } = useProductDetailsQuery(id);
   const product = productDetails?.data;
-  console.log(product)
   const [size, setSize] = useState();
   const [color, setColor] = useState();
   const images = ["/img2.webp", "/img1.webp", "/img2.webp"];
@@ -175,6 +175,8 @@ const ProductDetails = () => {
 
       {/* Product Suggestions */}
       <ProductSuggestion />
+
+      <PDFGenerator/>
 
       {/* Back Home Button */}
       <BackToHome />

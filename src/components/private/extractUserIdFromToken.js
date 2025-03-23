@@ -7,7 +7,7 @@ export const extractUserIdFromToken = (jwt) => {
     const decoded = jwtDecode(token);
     return decoded?.id;
   } catch (error) {
-    console.log("Invalid JWT token", error);
+    // console.log("Invalid JWT token", error);
     return null;
   }
 };

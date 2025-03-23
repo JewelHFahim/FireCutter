@@ -1,6 +1,7 @@
 import React from "react";
 
 const FilterSort = ({ totalCount }) => {
+  
   return (
     <div className="flex items-center justify-between py-4">
       <div className="flex items-center gap-2">

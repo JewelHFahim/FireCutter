@@ -12,7 +12,6 @@ const Home = () => {
   const [page, setPage] = useState(1);
   // const dispatch = useDispatch();
   const { data: allProducts, isLoading } = useGetAllProductsQuery(page);
-  console.log(allProducts)
   const totalCount = allProducts?.pagination?.totalCount;
   // useEffect(() => {
   //   if (typeof window !== "undefined") {

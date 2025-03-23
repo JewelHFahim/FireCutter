@@ -14,16 +14,11 @@ const Register = () => {
   const [viewPass, setViewPass] = useState(false);
   const [signup, { isLoading }] = useSignupMutation();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
     try {
       const response = await signup(data);
-      console.log(response);
       if (response?.data) {
         toast.success(response.data?.message);
         router.push("/login");
@@ -38,6 +33,7 @@ const Register = () => {
       console.log(error);
       toast.error("Try again later");
     }
+
   };
 
   return (

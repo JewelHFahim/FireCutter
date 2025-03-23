@@ -16,8 +16,6 @@ const Navbar = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
-  // console.log(totalQuantity)
-  // const {totalQuantity} = JSON?.parse(localStorage?.getItem("cart"));
 
   return (
     <div className="border-b py-4">

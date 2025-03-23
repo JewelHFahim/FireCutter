@@ -18,9 +18,9 @@ export default function Orders({ setOrderId, setActive }) {
   };
 
   return (
-    <div className="md:max-w-screen-xl mx-auto h-full">
+    <div className="mx-auto h-full">
       {isLoading ? (
-        <div className="w-full h-[60vh] flex justify-center items-center">
+        <div className="w-full h-full flex justify-center items-center">
           <Loader />
         </div>
       ) : (

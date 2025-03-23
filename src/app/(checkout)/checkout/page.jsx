@@ -91,7 +91,7 @@ export default function CheckoutPage() {
       const response = await createOrder(orderDatas);
 
       if (response?.data?.status) {
-        toast.success("Order placed");
+        toast.success(response?.data?.message);
         dispatch(clearCart());
         route.push(`/invoice/${response?.data?.data?._id}`);
       }

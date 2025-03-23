@@ -1,7 +1,5 @@
 "use client";
 
-import { extractUserIdFromToken } from "@/components/private/extractUserIdFromToken";
-import { useUserDetailsQuery } from "@/redux/features/users/userApis";
 import React, { useState } from "react";
 import Orders from "@/components/user-account/Orders";
 import AccountInfo from "@/components/user-account/AccountInfo";
@@ -9,15 +7,10 @@ import PrivateRoute from "@/components/private/PrivateRoute";
 import ResetPassword from "@/components/user-account/ResetPassword";
 import AcccountNav from "@/components/user-account/AcccountNav";
 import OrderDetails from "@/components/user-account/OrderDetails";
-import { useLogoutMutation } from "@/redux/features/auth/authApis";
-import toast from "react-hot-toast";
 
 const AccountPage = () => {
-  // const token = Cookies.get("fc_token");
   const [active, setActive] = useState("orders");
   const [orderId, setOrderId] = useState("");
-  const userId = extractUserIdFromToken();
-  const { data: userDetails } = useUserDetailsQuery(userId);
 
   const renderComponent = () => {
     switch (active) {
